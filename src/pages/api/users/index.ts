@@ -1,18 +1,13 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import getMongoClient from "@/clients/mongodb";
 import User from "@/models/user";
-import { resolve } from "path";
-
-type Data = {
-  name: string;
-};
 
 const DATABASE = "test";
 const COLLECTION = "users";
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Data>
+  res: NextApiResponse<void>
 ) {
   if (req.method === "POST") {
     await addUser(req)
