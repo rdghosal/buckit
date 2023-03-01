@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import getMongoClient from "@/clients/mongodb";
-import User from "@/models/user";
+import { IUser, User, userSchema } from "@/models/user";
+import { ObjectId } from "mongodb";
 
 const DATABASE = "test";
 const COLLECTION = "users";
@@ -17,8 +18,13 @@ export default async function handler(
 }
 
 async function addUser(req: NextApiRequest): Promise<void> {
-  const user: User = req.body;
-  console.log(user);
-  const client = await getMongoClient();
-  await client.db(DATABASE).collection(COLLECTION).insertOne(user);
+  try {
+    const user: IUser = await userSchema.validate(req.body);
+    const userModel: User = new User(user.name, user.email, user._id);
+    console.log(user);
+    const client = await getMongoClient();
+    await client.db(DATABASE).collection(COLLECTION).insertOne(userModel);
+  } catch (error) {
+    console.log(error);
+  }
 }

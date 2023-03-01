@@ -1,17 +1,29 @@
 import BaseRecord from "./basemodel";
+import * as yup from "yup";
+import { ObjectId } from "mongodb";
 
-class User extends BaseRecord {
+export interface IUser {
+  _id?: string | ObjectId;
+  name: string;
+  email: string;
+}
+
+export class User extends BaseRecord {
   name: string;
   email: string;
   constructor(
     name: string,
     email: string,
-    ...p: ConstructorParameters<typeof BaseRecord>
+    ...args: ConstructorParameters<typeof BaseRecord>
   ) {
-    super(...p);
+    super(...args);
     this.name = name;
     this.email = email;
   }
 }
 
-export default User;
+export const userSchema: yup.ObjectSchema<IUser> = yup.object({
+  _id: yup.string().optional(),
+  name: yup.string().required(),
+  email: yup.string().email("must be email").required(),
+});
