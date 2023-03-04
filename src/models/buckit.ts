@@ -24,7 +24,7 @@ class BaseInput extends BaseRecord {
 interface IBaseInput {
   _id?: string;
   title: string;
-  createdBy?: string;
+  createdBy: string;
   description?: string;
 }
 
@@ -48,7 +48,7 @@ export interface IBucket extends IBaseInput {
 export const bucketSchema = new yup.ObjectSchema<IBucket>({
   _id: yup.string().optional(),
   title: yup.string().required(),
-  createdBy: yup.string().optional(),
+  createdBy: yup.string().required(),
   description: yup.string().optional(),
   userIds: yup.array(yup.string().required()).optional(),
 });
