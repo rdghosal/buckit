@@ -1,5 +1,5 @@
 interface IButtonProps {
-  children: string;
+	children: string;
 }
 
 const Button = ({ children }: IButtonProps): JSX.Element => {
