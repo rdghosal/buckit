@@ -1,11 +1,12 @@
 import Navbar from "../components/navbar/Navbar";
+import Page from "../components/page/Page";
 
 
 export default function BucketsMenu() {
   return (
-    <div>
+    <Page>
         <Navbar />
         <div>Welcome to your buckets</div>
-    </div>
+    </Page>
   );
 }
