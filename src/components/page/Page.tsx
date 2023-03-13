@@ -9,7 +9,7 @@ function Page({ children, center }: IPageProps) {
   return (
       <div 
           className={styles.container}
-          style={{justifyContent: center ? 'center' : ''}}>
+          style={{alignItems: center ? 'center' : ''}}>
           {children}
       </div>
   );
