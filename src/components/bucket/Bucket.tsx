@@ -1,3 +1,6 @@
+import styles from './Bucket.module.css';
+
+
 // TODO: add styles
 interface IBucketProps {
     title: string;
@@ -6,8 +9,8 @@ interface IBucketProps {
 
 const Bucket = ({title, description}: IBucketProps): JSX.Element => {
     return (
-        <div>
-            <div>
+        <div className={styles.listMode}>
+            <div className={styles.bucketTitle}>
                 {title}
             </div>
             <div>

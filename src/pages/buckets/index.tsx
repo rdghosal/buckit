@@ -16,7 +16,8 @@ export default function BucketsMenu() {
             flexDirection: 'row',
             alignItems: 'left',
             width: '100%',
-            paddingLeft: '1.5rem'}}>
+            paddingLeft: '1.5rem',
+            marginBottom: '2rem'}}>
             <AddItemButton onClick={moveToBucketForm}/>
         </div>
         <VerticalContainer>

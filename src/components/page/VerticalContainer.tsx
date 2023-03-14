@@ -1,4 +1,4 @@
-import './VerticalContainer.module.css';
+import styles from './VerticalContainer.module.css';
 
 interface IVerticalContainerProps {
     children: JSX.Element;
@@ -6,7 +6,9 @@ interface IVerticalContainerProps {
 
 const VerticalContainer = ({children}: IVerticalContainerProps) => {
     return (
-        <div style={{ display: 'flex', flexDirection: 'column'}}>
+        <div 
+            style={{ display: 'flex', flexDirection: 'column'}}
+            className={styles.container}>
             { children }
         </div>
     )
