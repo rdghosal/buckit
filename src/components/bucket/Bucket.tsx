@@ -1,7 +1,5 @@
 import styles from './Bucket.module.css';
 
-
-// TODO: add styles
 interface IBucketProps {
     title: string;
     description?: string;
