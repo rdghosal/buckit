@@ -11,18 +11,21 @@ export default function BucketsMenu() {
     <Page center={true}>
         <Navbar />
         <Title color={"#6E7D86"}>your buckets.</Title>
-        <div style={{
-            display: 'flex',
-            flexDirection: 'row',
-            alignItems: 'left',
-            width: '100%',
-            paddingLeft: '1.5rem',
-            marginBottom: '2rem'}}>
-            <AddItemButton onClick={moveToBucketForm}/>
-        </div>
         <VerticalContainer>
             <Bucket title="my-test" description='test' />
         </VerticalContainer>
+        <div style={{
+                display: 'flex',
+                justifyContent: 'flex-end',
+                paddingRight: '2rem',
+                alignItems: 'start',
+                position: 'fixed',
+                top: 'calc(100vh - 110px)',
+                width: '100%',
+                }}
+            >
+            <AddItemButton onClick={moveToBucketForm}/>
+        </div>
     </Page>
   );
 }

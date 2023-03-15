@@ -16,7 +16,6 @@ const BucketForm = (): JSX.Element => {
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'space-evenly',
-                    height: '10rem',
                     marginBottom: '2rem'
                     }}
                 >
