@@ -1,10 +1,16 @@
+import styles from "./TextInput.module.css";
+
 interface ITextInputProps {
     placeholder: string;
 };
 
 const TextInput = ({placeholder}: ITextInputProps): JSX.Element => {
     return (
-        <input type={'text'} placeholder={placeholder}/>
+        <input 
+            className={styles.textInput}
+            type={'text'}
+            placeholder={placeholder}
+            />
     );
 
 };

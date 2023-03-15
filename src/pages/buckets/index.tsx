@@ -10,7 +10,7 @@ export default function BucketsMenu() {
   return (
     <Page center={true}>
         <Navbar />
-        <Title>your buckets.</Title>
+        <Title color={"#6E7D86"}>your buckets.</Title>
         <div style={{
             display: 'flex',
             flexDirection: 'row',
