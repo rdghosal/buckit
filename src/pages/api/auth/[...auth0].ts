@@ -13,9 +13,10 @@ async function registerUser(session: Session): Promise<void> {
         { name: session.user.name, email: session.user.email });
     const userModel: User = new User(user.name, user.email, user._id);
     const client = await getMongoClient();
+    // TOOD: remove _id from user data model
     await client.db(DATABASE).collection(COLLECTION).updateOne(
         { name: userModel.name, email: userModel.email, isActive: true }, 
-        { $set: userModel },
+        { $set: { name: userModel.name, email: userModel.email } },
         { upsert: true });
   } catch (error) {
     console.error(error);
@@ -30,7 +31,7 @@ const afterCallback = async (
     state
     ) => {
     try {
-        registerUser(session);
+        await registerUser(session);
     } catch(error) {
         console.error(error);
         throw error;
