@@ -1,3 +1,4 @@
+import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 import BucketForm from "@/components/form/BucketForm";
 import Navbar from "@/components/navbar/Navbar";
 import Page from "@/components/page/Page";
@@ -16,4 +17,5 @@ const AddBucketPage = (): JSX.Element => {
 };
 
 export default AddBucketPage;
+export const getServerSideProps = withPageAuthRequired();
 

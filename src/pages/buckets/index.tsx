@@ -1,3 +1,4 @@
+import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 import AddItemButton from "@/components/button/AddItemButton";
 import VerticalContainer from "@/components/page/VerticalContainer";
 import Title from "@/components/text/Title";
@@ -33,3 +34,6 @@ export default function BucketsMenu() {
 function moveToBucketForm(): void {
     window.location.href = "/buckets/add";
 }
+
+export const getServerSideProps = withPageAuthRequired();
+

@@ -1,6 +1,6 @@
 import getMongoClient from "@/clients/mongodb";
 import { IUser, User, userSchema } from "@/models/user";
-import { handleAuth, handleCallback, Session } from "@auth0/nextjs-auth0";
+import { handleLogin, handleAuth, handleCallback, Session } from "@auth0/nextjs-auth0";
 import { NextApiRequest, NextApiResponse } from "next";
 
 // TODO: refactor registerUser to separate file
@@ -36,7 +36,6 @@ const afterCallback = async (
         console.error(error);
         throw error;
     }
-    res.redirect("/buckets");
     return session;
 };
 
@@ -47,6 +46,11 @@ export default handleAuth({
         } catch (error) {
             res.status(error.status || 500).end();
         }
+    },
+    async login(req, res) {
+        await handleLogin(req, res, {
+          returnTo: "/buckets",
+        });
     }
 });
 
