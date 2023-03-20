@@ -1,22 +1,23 @@
 import BaseRecord from "./basemodel";
 import * as yup from "yup";
+import { ObjectId } from "mongodb";
 
-// ----------------------------------------------------------------- < Base >
+// ------------------------------------------------------------------ < Base >
 
 class BaseInput extends BaseRecord {
   title: string;
-  createdBy: string | null;
+  createdBy: ObjectId;
   description: string | null;
 
   constructor(
     title: string,
-    createdBy?: string,
+    createdBy: ObjectId,
     description?: string,
     ...args: ConstructorParameters<typeof BaseRecord>
   ) {
     super(...args);
     this.title = title;
-    this.createdBy = createdBy || null;
+    this.createdBy = createdBy;
     this.description = description || null;
   }
 }
@@ -31,9 +32,9 @@ interface IBaseInput {
 // --------------------------------------------------------------- < Buckets >
 
 export class Bucket extends BaseInput {
-  userIds: string[];
+  userIds: ObjectId[];
   constructor(
-    userIds: string[] = [],
+    userIds: ObjectId[] = [],
     ...args: ConstructorParameters<typeof BaseInput>
   ) {
     super(...args);
@@ -48,7 +49,7 @@ export interface IBucket extends IBaseInput {
 export const bucketSchema = new yup.ObjectSchema<IBucket>({
   _id: yup.string().optional(),
   title: yup.string().required(),
-  createdBy: yup.string().required(),
+  // createdBy: yup.string().required(),
   description: yup.string().optional(),
   userIds: yup.array(yup.string().required()).optional(),
 });

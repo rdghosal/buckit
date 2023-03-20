@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Landing.module.css";
 import Link from "next/link";
+import { withApiAuthRequired, withPageAuthRequired } from "@auth0/nextjs-auth0";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,3 +30,6 @@ export default function Landing() {
     </div>
   );
 }
+ 
+const getServerSideProps = withApiAuthRequired();
+
